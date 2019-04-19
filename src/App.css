@@ -1,5 +1,13 @@
+@import "reset.css";
+
+body {
+  background-color: #f6f9fc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
 .App {
-  text-align: center;
+  /* text-align: center; */
+  float: left;
 }
 
 .App-logo {
@@ -21,6 +29,134 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Minesweeper {
+  height: 24px;
+}
+
+img {
+  --margin-bottom: -5px;
+}
+
+.removeMrgnBtm {
+  margin-bottom: -5px;
+  box-sizing: border-box;
+}
+
+.hd_wrapper-border-left-top {
+  background-image: url(imgs/skins/corner_up_left_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_wrapper-border-hor {
+  background-image: url(imgs/skins/border_hor_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_wrapper-border-right-top {
+  background-image: url(imgs/skins/corner_up_right_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.top-area {
+  background: #b3b3b3;
+  float: left;
+}
+
+.hd_wrapper-border-t-left {
+  background-image: url(imgs/skins/t_left_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_wrapper-border-t-right {
+  background-image: url(imgs/skins/t_right_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_wrapper-border-vert {
+  background-image: url(imgs/skins/border_vert_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_closed {
+  background-image: url(imgs/skins/closed.svg);
+}
+
+.mineArea {
+  float: left;
+}
+
+.cell {
+  float: left;
+  background-size: 100%;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.hd_numbers-panel {
+  background-image: url(imgs/skins/nums_background.svg);
+  background-size: 100%;
+}
+
+.hd_wrapper-border-left-bottom {
+  background-image: url(imgs/skins/corner_bottom_left_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_wrapper-border-hor {
+  background-image: url(imgs/skins/border_hor_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.hd_wrapper-border-right-bottom {
+  background-image: url(imgs/skins/corner_bottom_right_2x.png);
+  background-size: 100% 100%;
+  float: left;
+}
+
+.top-area-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hd_top-area-face-unpressed {
+  background-image: url(imgs/skins/santa-sunglasses.svg);
+}
+
+.top-area-face {
+  margin: 0 auto;
+  background-size: 100%;
+}
+
+.hd_top-area-num0 {
+  background-image: url(imgs/skins/d0.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num1 {
+  background-image: url(imgs/skins/d1.svg);
+  background-size: 100% 100%;
+}
+
+.banner {
+  background-color: aquamarine;
+  border: #61dafb
 }
 
 @keyframes App-logo-spin {

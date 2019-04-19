@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import test from './imgs/skins/d1.svg';
+import Minesweeper from './components/Minesweeper';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div  key="app1" className="App">
+        {/* <header className="App-header">
+          <img src={test} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
@@ -19,7 +21,11 @@ class App extends Component {
           >
             Learn React
           </a>
-        </header>
+        </header> */}
+        <Minesweeper  key="m1"
+          xSize={9}
+          ySize={9}
+          />
       </div>
     );
   }
