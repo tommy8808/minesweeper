@@ -6,7 +6,10 @@ class Minesweeper extends React.Component {
 
         this.state ={x: this.props.xSize, y: this.props.ySize};
 
+        this.ibxSize = React.createRef();
+
         //this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
@@ -133,11 +136,22 @@ class Minesweeper extends React.Component {
         this.setState({x: event.target.value, y: event.target.value});
     }
 
+    handleSubmit(e) {debugger;
+        e.preventDefault();
+        if (!this.ibxSize.current.value) {
+          return;
+        }
+
+        this.setState({x: this.ibxSize.current.value, y: this.ibxSize.current.value});
+        
+    }
+
     render() {
         return (
             <React.Fragment>
                 <div key="p3" >{this.Plate()}</div>
-                <input type="text" value={this.state.x}  onChange={this.handleChange}></input>
+                <input ref={this.ibxSize} type="text"></input>
+                <button onClick={this.handleSubmit}>크기변경</button>
                 
             </React.Fragment>
             
