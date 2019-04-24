@@ -139,6 +139,10 @@ img {
   background-image: url(imgs/skins/santa-sunglasses.svg);
 }
 
+.hd_top-area-face-pressed {
+  background-image: url(imgs/skins/santa-wink.svg);
+}
+
 .top-area-face {
   margin: 0 auto;
   background-size: 100%;

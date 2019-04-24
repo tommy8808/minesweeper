@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import test from './imgs/skins/d1.svg';
 import Minesweeper from './components/Minesweeper';
 
 class App extends Component {
