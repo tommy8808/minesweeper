@@ -89,6 +89,46 @@ img {
   background-image: url(imgs/skins/closed.svg);
 }
 
+.hd_pressed {
+  background-image: url(imgs/skins/pressed.svg);
+}
+
+.hd_type0 {
+  background-image: url(imgs/skins/type0.svg);
+}
+
+.hd_type1 {
+  background-image: url(imgs/skins/type1.svg);
+}
+
+.hd_type2 {
+  background-image: url(imgs/skins/type2.svg);
+}
+
+.hd_type3 {
+  background-image: url(imgs/skins/type3.svg);
+}
+
+.hd_type4 {
+  background-image: url(imgs/skins/type4.svg);
+}
+
+.hd_type5 {
+  background-image: url(imgs/skins/type5.svg);
+}
+
+.hd_type6 {
+  background-image: url(imgs/skins/type6.svg);
+}
+
+.hd_type7 {
+  background-image: url(imgs/skins/type7.svg);
+}
+
+.hd_type8 {
+  background-image: url(imgs/skins/type8.svg);
+}
+
 .mineArea {
   float: left;
 }
