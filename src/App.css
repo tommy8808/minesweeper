@@ -129,6 +129,14 @@ img {
   background-image: url(imgs/skins/type8.svg);
 }
 
+.hd_type10 {
+  background-image: url(imgs/skins/mine.svg);
+}
+
+.hd_type11 {
+  background-image: url(imgs/skins/mine_red.svg);
+}
+
 .mineArea {
   float: left;
 }

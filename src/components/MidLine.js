@@ -4,10 +4,67 @@ class MidLine extends React.Component {
      constructor(props) {
          super(props);
 
-         this.state = {isClicking: null, pressedTile: null, mapArray: []}
+         
+            
+         this.mapArray = [];
+         this.state = {isClicking: null, pressedTile: null, mineClicked: false};
          this.onMapMouseDown = this.onMapMouseDown.bind(this);
          this.onMapMouseUp = this.onMapMouseUp.bind(this);
      }
+
+    
+     
+    componentDidMount(){
+        let lv = this.props.lv;
+        let numberOfMine = (lv === 1 ? 10 : lv === 2 ? 40 : lv === 3? 99 : (this.props.x*this.props.y)/5);
+        
+        
+
+        const mapObject = {
+            id: '',
+            mine: false,
+            numberOfMineAround: () => {
+                console.log('지뢰갯수표시해드릴꺼에욧..!');
+               }
+        }
+
+        
+        for(let i=0; i<this.props.x; i++){
+            for(let j=0; j<this.props.y; j++){
+                let foo = this.copyObject(mapObject);
+                foo.id = i+"_"+j;
+
+                this.mapArray.push(foo);
+            }
+         }
+         
+        for(let i=0; i<numberOfMine; i++){
+            let randomId = `${Math.floor(Math.random() * Math.floor(this.props.x))}_${Math.floor(Math.random() 
+                * Math.floor(this.props.y))}`;
+            let mineMap = this.mapArray.find((item)=>{
+                    return item.id === randomId
+            });
+            !mineMap.mine? mineMap.mine = true : i--
+
+        }
+    };
+
+    copyObject(obj) {
+        if (obj === null || typeof obj !== 'object') {
+          return obj;
+        }
+      
+        const copiedObject = obj.constructor();
+      
+        for (let key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            copiedObject[key] = obj[key];
+          }
+        }
+        return copiedObject;
+    }
+
+    
 
     onMapMouseDown(e) {
         e.preventDefault();
@@ -22,9 +79,18 @@ class MidLine extends React.Component {
         this.setState({
             pressedTile: false
         });
+        let clickedMap = this.mapArray.find((obj)=>{
+            return obj.id === e._dispatchInstances.key;
+        });
+        if(clickedMap.mine)
+        this.setState({
+            mineClicked:true
+        });
+            
+        
     }
 
-    onMapMouseLeave = (e) => {debugger;
+    onMapMouseLeave = (e) => {
         e.preventDefault();
         this.setState({
             pressedTile: false
@@ -34,13 +100,22 @@ class MidLine extends React.Component {
     mineArea() {
         let mapClassName = "cell";
         let mineArea = [];
+        let mineClicked = this.state.mineClicked;
+        
         for(let i=0; i<this.props.x; i++){
             for(let j=0; j<this.props.y; j++){
-
+                
                 if((i+"_"+j) === this.state.pressedTile){
                     mapClassName = "cell hd_pressed"
                 }else {
                     mapClassName = "cell hd_closed"
+                }
+                if(this.mapArray){
+                    let clickedMap = this.mapArray.find((obj)=>{
+                        return obj.id === (i+"_"+j);
+                    });
+                    if(mineClicked && clickedMap.mine)
+                        mapClassName = "cell hd_type10"
                 }
                 //rowOfPlate.push(<img src={closed} className="Minesweeper" alt="closed" />)
                 mineArea.push(<div key={i+"_"+j} onMouseDown={this.onMapMouseDown} 
@@ -53,10 +128,12 @@ class MidLine extends React.Component {
 
     render() {
         
+
+        
         return (
-            <div key="p1" style={{height:24*this.props.x}}>
+            <div key="p1" style={{height:24*this.props.y}}>
                 <div key="m1" className="hd_wrapper-border-vert" style={{width:18, height:24*this.props.y}} />
-                <div key="m2" className="mineArea" style={{ width:24*this.props.x, height:24*this.props.y}}>{this.mineArea()}</div>
+                <div key="m2" onContextMenu={(e)=>{e.preventDefault()}} className="mineArea" style={{ width:24*this.props.x, height:24*this.props.y}}>{this.mineArea()}</div>
                 <div key="m3" className="hd_wrapper-border-vert" style={{width:18, height:24*this.props.y}} />
             </div>
         )
