@@ -10,6 +10,12 @@ class MidLine extends React.Component {
          this.state = {isClicking: null, pressedTile: null, mineClicked: false};
          this.onMapMouseDown = this.onMapMouseDown.bind(this);
          this.onMapMouseUp = this.onMapMouseUp.bind(this);
+         this.r1_1 = React.createRef();
+         for(let i=0; i<this.props.x; i++){
+            for(let j=0; j<this.props.y; j++){
+               // eval(`this.${i}_${j}`);
+            }
+         }
      }
 
     
@@ -17,7 +23,7 @@ class MidLine extends React.Component {
     componentDidMount(){
         let lv = this.props.lv;
         let numberOfMine = (lv === 1 ? 10 : lv === 2 ? 40 : lv === 3? 99 : (this.props.x*this.props.y)/5);
-        
+        console.log('DidMount run');
         
 
         const mapObject = {
@@ -97,6 +103,27 @@ class MidLine extends React.Component {
         });
     }
 
+    onMapClick = (e) => {debugger
+        e.preventDefault();
+        
+        // if(e.currentTarget.dataset.mine){
+        //     console.log(e.currentTarget.dataset.mine)
+        // }
+        let findMine = this.mapArray.find((obj)=>{
+            return (obj.id === e._targetInst.key);
+        });
+        if(findMine.mine){
+            e.currentTarget.className ="cell hd_type11";
+
+        }else{
+            findMine.numberOfMineAround();
+        }
+        //this.textInput.className = "cell hd_type11";
+       
+    }
+
+    
+
     mineArea() {
         let mapClassName = "cell";
         let mineArea = [];
@@ -119,7 +146,11 @@ class MidLine extends React.Component {
                 }
                 //rowOfPlate.push(<img src={closed} className="Minesweeper" alt="closed" />)
                 mineArea.push(<div key={i+"_"+j} onMouseDown={this.onMapMouseDown} 
-                onMouseUp={this.onMapMouseUp} onMouseOut={this.onMapMouseLeave} className={mapClassName} style={{width:24, height:24}}/>)
+                onMouseUp={this.onMapMouseUp} data-mine={true} onMouseOut={this.onMapMouseLeave}
+                 className={mapClassName} style={{width:24, height:24}}
+                  onClick={this.onMapClick}
+                 
+                 />)
             }
         }
 
