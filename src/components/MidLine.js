@@ -18,6 +18,19 @@ class MidLine extends React.Component {
          }
      }
 
+     shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.x !== nextProps.x) {
+          return true;
+        }
+        if (this.state.pressedTile !== nextState.pressedTile) {
+          return true;
+        }
+        if (this.state.mineClicked !== nextState.mineClicked) {
+            return true;
+        }
+        return false;
+      }
+
     
      
     componentDidMount(){
@@ -103,7 +116,7 @@ class MidLine extends React.Component {
         });
     }
 
-    onMapClick = (e) => {debugger
+    onMapClick = (e) => {
         e.preventDefault();
         
         // if(e.currentTarget.dataset.mine){
@@ -158,7 +171,7 @@ class MidLine extends React.Component {
     }
 
     render() {
-        
+        console.log('rendering')
 
         
         return (
