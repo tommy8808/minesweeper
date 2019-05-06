@@ -4,15 +4,32 @@ class HeadLine extends React.Component {
      constructor(props) {
          super(props);
 
-         this.state = {isClicking: null}
+         this.state = {isClicking: null, seconds: 0}
 
          this.onFaceMouseDown = this.onFaceMouseDown.bind(this);
          this.onFaceMouseUp = this.onFaceMouseUp.bind(this);
 
      }
 
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    tick() {
+        this.setState(state => ({
+          seconds: state.seconds + 1
+        }));
+    }
+
     onFaceClick = (e) => {
-        
+        //clearInterval(this.interval);
+        this.setState({
+            seconds: 0
+        });
     }
 
     onFaceMouseDown() {
@@ -43,6 +60,30 @@ class HeadLine extends React.Component {
             faceClassName += 'unpressed'
         }
 
+        let first = 0;
+        let second = 0;
+        let third = 0;
+        let numArray;
+        if(this.state.seconds > 9){
+            //numArray = this.state.seconds.toString().split('');
+            numArray = [...this.state.seconds.toString()];
+            if(numArray.length === 3){
+                first = numArray[0];
+                second = numArray[1];
+                third = numArray[2];
+            } else if(numArray.length === 2){
+                second = numArray[0];
+                third = numArray[1];
+            }
+        } else{
+            third = this.state.seconds
+        }
+        console.log(numArray);
+
+        let firstDigit = `hd_top-area-num${first} pull-left`;
+        let secondDigit = `hd_top-area-num${second} pull-left`;
+        let thirdDigit = `hd_top-area-num${third} pull-left`;
+
         return (
             <React.Fragment>
                 <div key="h1" style={{height:16.5}}>
@@ -62,9 +103,9 @@ class HeadLine extends React.Component {
                                 <div key="li1" className="pull-left" style={{width:3, height:31.5}}></div>
                                 <div key="li2" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
                                 <div key="li3" className="pull-left" style={{width:3, height:31.5}}></div>
-                                <div key="li4" className="hd_top-area-num1 pull-left" style={{width:16.5, height:31.5}}></div>
+                                <div key="li4" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
                                 <div key="li5" className="pull-left" style={{width:3, height:31.5}}></div>
-                                <div key="li6"className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
+                                <div key="li6" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
                             </div>
                         </div>
 
@@ -72,11 +113,11 @@ class HeadLine extends React.Component {
                             <div key="r1" className="" style={{width:61.5, height:3}}></div>
                             <div key="r2" className="" style={{width:61.5, height:31.5}}>
                                 <div key="ri1" className="pull-left" style={{width:3, height:31.5}}></div>
-                                <div key="ri2" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
+                                <div key="ri2" className={firstDigit} style={{width:16.5, height:31.5}}></div>
                                 <div key="ri3" className="pull-left" style={{width:3, height:31.5}}></div>
-                                <div key="ri4" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
+                                <div key="ri4" className={secondDigit} style={{width:16.5, height:31.5}}></div>
                                 <div key="ri5" className="pull-left" style={{width:3, height:31.5}}></div>
-                                <div key="ri6" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
+                                <div key="ri6" className={thirdDigit} style={{width:16.5, height:31.5}}></div>
                             </div>
                         </div>
                         <div key="d5" className="pull-right" style={{width:4.5 , height:31.5}}></div>

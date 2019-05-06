@@ -206,6 +206,46 @@ img {
   background-size: 100% 100%;
 }
 
+.hd_top-area-num2 {
+  background-image: url(imgs/skins/d2.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num3 {
+  background-image: url(imgs/skins/d3.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num4 {
+  background-image: url(imgs/skins/d4.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num5 {
+  background-image: url(imgs/skins/d5.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num6 {
+  background-image: url(imgs/skins/d6.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num7 {
+  background-image: url(imgs/skins/d7.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num8 {
+  background-image: url(imgs/skins/d8.svg);
+  background-size: 100% 100%;
+}
+
+.hd_top-area-num9 {
+  background-image: url(imgs/skins/d9.svg);
+  background-size: 100% 100%;
+}
+
 .banner {
   background-color: aquamarine;
   border: #61dafb
