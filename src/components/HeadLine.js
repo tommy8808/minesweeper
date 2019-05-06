@@ -65,7 +65,6 @@ class HeadLine extends React.Component {
         let third = 0;
         let numArray;
         if(this.state.seconds > 9){
-            //numArray = this.state.seconds.toString().split('');
             numArray = [...this.state.seconds.toString()];
             if(numArray.length === 3){
                 first = numArray[0];
@@ -78,7 +77,6 @@ class HeadLine extends React.Component {
         } else{
             third = this.state.seconds
         }
-        console.log(numArray);
 
         let firstDigit = `hd_top-area-num${first} pull-left`;
         let secondDigit = `hd_top-area-num${second} pull-left`;
@@ -103,7 +101,7 @@ class HeadLine extends React.Component {
                                 <div key="li1" className="pull-left" style={{width:3, height:31.5}}></div>
                                 <div key="li2" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
                                 <div key="li3" className="pull-left" style={{width:3, height:31.5}}></div>
-                                <div key="li4" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
+                                <div key="li4" className="hd_top-area-num1 pull-left" style={{width:16.5, height:31.5}}></div>
                                 <div key="li5" className="pull-left" style={{width:3, height:31.5}}></div>
                                 <div key="li6" className="hd_top-area-num0 pull-left" style={{width:16.5, height:31.5}}></div>
                             </div>
